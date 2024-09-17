@@ -19,9 +19,10 @@ int main()
   if (file == NULL)
   {
     perror("Errore nell'apertura del file");
+    return -1;
   }
 
-  Person person[100];
+  Person *person = (Person *)malloc(100 * sizeof(Person));
   int count = 0;
 
   char buffer[MAX_LINE_LENGTH];
@@ -56,6 +57,12 @@ int main()
       strcpy(person[count].email, token);
       token = strtok(NULL, ",");
     }
+    else
+    {
+      // Se non c'è email, metto un valore predefinito
+      strcpy(person[count].email, "N/A\n");
+      token = strtok(NULL, ",");
+    }
     count++;
   }
 
@@ -63,4 +70,8 @@ int main()
   {
     printf("Nome: %s - Cognome: %s - Età: %d - Email: %s", person[i].nome, person[i].cognome, person[i].eta, person[i].email);
   }
+
+  // Libero la memoria allocata e chiudo il file
+  free(person);
+  fclose(file);
 }
