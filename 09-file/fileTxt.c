@@ -39,7 +39,7 @@ int main()
 
   // SCRITTURA
 
-  //  Riposizionare il puntatore del file all'inizio per scrivere
+  //  Riposizionare il puntatore del file alla fine per scrivere
   fseek(file, 0, SEEK_END); // Sposta il puntatore alla fine del file
 
   //  fputc(int c, FILE *file): scrive un carattere nel file.

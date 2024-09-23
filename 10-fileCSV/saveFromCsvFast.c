@@ -26,7 +26,8 @@ int main()
     return -1;
   }
   int rowNumber = rowCount(file);
-  Person *person = (Person *)malloc(rowNumber * sizeof(Person));
+  // Person *person = (Person *)malloc(rowNumber * sizeof(Person));
+  Person person[rowNumber];
 
   int count = 0;
   char buffer[MAX_LINE_LENGTH];
@@ -38,47 +39,37 @@ int main()
 
     // bufferRead(person, buffer, count);  // Lettura veloce con sscanf
 
+    // Creiamo un array di puntatori ai campi della struct
+    char *fields[4];
+    int fieldCount = 0;
+    // Estrae ogni campo usando strtok e lo memorizza nell'array fields
     char *token = strtok(buffer, ",");
-    // Inserisco nome
-    if (token != NULL)
+    while (token != NULL && fieldCount < 4)
     {
-      strcpy(person[count].nome, token);
+      fields[fieldCount] = token;
+      fieldCount++;
       token = strtok(NULL, ",");
     }
-    // Inserisco cognome
-    if (token != NULL)
-    {
-      strcpy(person[count].cognome, token);
-      token = strtok(NULL, ",");
-    }
-    // Inserisco età
-    if (token != NULL)
-    {
-      person[count].eta = atoi(token);
-      token = strtok(NULL, ",");
-    }
-    // Inserisco email
-    if (token != NULL)
-    {
-      strcpy(person[count].email, token);
-      token = strtok(NULL, ",");
-    }
-    else
-    {
-      // Se non c'è email, metto un valore predefinito
-      strcpy(person[count].email, "N/A\n");
-      token = strtok(NULL, ",");
-    }
+    // Copio le stringhe salvate in field dentro Person
+    strcpy(person[count].nome, fields[0]);
+    strcpy(person[count].cognome, fields[1]);
+    person[count].eta = atoi(fields[2]);
+    strcpy(person[count].email, fieldCount > 3 ? fields[3] : "N/A");
+
     count++;
   }
 
   for (size_t i = 0; i < count; i++)
   {
-    printf("Nome: %s - Cognome: %s - Età: %d - Email: %s", person[i].nome, person[i].cognome, person[i].eta, person[i].email);
+    printf("Nome: %s - Cognome: %s - Età: %d - Email: %s",
+           person[i].nome,
+           person[i].cognome,
+           person[i].eta,
+           person[i].email);
   }
 
   // Libero la memoria allocata e chiudo il file
-  free(person);
+  // free(person);
   fclose(file);
 }
 
