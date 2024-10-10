@@ -4,7 +4,7 @@
 
 #define MAX_NAME 100
 
-typedef struct main
+typedef struct
 {
     char name[MAX_NAME];
     int serialNumber;
@@ -19,6 +19,7 @@ int main(){
     scanf("%d",&studentsNumber);
 
     Student *students = (Student*) malloc(studentsNumber * sizeof(Student));
+    
 
     for (size_t i = 0; i < studentsNumber; i++)
     {
