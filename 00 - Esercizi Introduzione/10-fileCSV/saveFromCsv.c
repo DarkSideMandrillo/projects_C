@@ -85,12 +85,21 @@ int main()
 int rowCount(FILE *file)
 {
   int rowCount = 0;
-  char character;
-  while ((character = fgetc(file)) != EOF)
-    if (character == '\n')
-      rowCount++;
+  rewind(file);
+  char buffer[1024];
+  // char character;
+  // while ((character = fgetc(file)) != EOF)
+  //   if (character == '\n')
+  //     rowCount++;
+  // rewind(file);
+  // return rowCount;
+  while (fgets(buffer, MAX_LINE_LENGTH, file)!=NULL)
+  {
+    rowCount++;
+  }
   rewind(file);
   return rowCount;
+   
 }
 
 // Funzione per legere i dati con sscanf
