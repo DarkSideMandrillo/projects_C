@@ -30,8 +30,6 @@ int main()
     // Faccio puntare il nodo SECONDO all'indirizzo del nodo TERZO
     second->next = third;
 
-    second = 0;
-    third = 0;
 
     // Stampo i dati della lista
     Node *current = head;
