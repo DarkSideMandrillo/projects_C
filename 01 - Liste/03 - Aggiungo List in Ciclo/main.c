@@ -14,21 +14,18 @@ int main()
     Node *tempPrevious;
 
     int count = 5;
-    head = (Node *)malloc(sizeof(Node));
-    head->next = NULL;
-    head->data = 0;
-    // ### POTREI FARE l'HEAD IN CICLO ### Come fare?
 
-    tempPrevious = head;
-
-    for (size_t i = 1; i < count; i++)
+    for (size_t i = 0; i < count; i++)
     {
         Node *tempActual = (Node *)malloc(sizeof(Node));
         tempActual->data = i;
         tempActual->next = NULL;
 
-        // Assegno il next e poi cambio puntatore
-        tempPrevious->next = tempActual;
+        if (i==0)
+            head=tempActual;
+        else
+            tempPrevious->next = tempActual;           
+
         tempPrevious = tempActual;
     }
 
