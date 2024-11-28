@@ -14,12 +14,7 @@ int main()
     Node *tempPrevious;
 
     int count = 5;
-    head = (Node *)malloc(sizeof(Node));
-    head->next = NULL;
-    head->data = 0;
-    // ### POTREI FARE l'HEAD IN CICLO ### Come fare?
 
-    tempPrevious = head;
 
     for (size_t i = 1; i < count; i++)
     {
@@ -27,8 +22,14 @@ int main()
         tempActual->data = i;
         tempActual->next = NULL;
 
-        // Assegno il next e poi cambio puntatore
-        tempPrevious->next = tempActual;
+                // Salvo l'indirizzo del primo nodo nella testa
+        if (i == 0)
+            head = tempActual;
+        else // ALTRIMENTI Assegno al next del precedente nodo l'indirizzo del nuovo nodo
+            tempPrevious->next = tempActual;
+
+
+        // Puntatore nodo precedente punta al nodo appena creato
         tempPrevious = tempActual;
     }
 
