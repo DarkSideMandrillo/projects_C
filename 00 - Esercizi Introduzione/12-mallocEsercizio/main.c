@@ -3,10 +3,10 @@
 
 int main()
 {
-  int arrayLenght;
+  int arrayLenght =0;
   printf("Questo proramma crea un Array di lunghezza variabile e lo popola proressivamente di int da 1 a N\n");
   printf("Inserisci la lunghezza dell'array: ");
-  scanf("%d", &arrayLenght);
+  scanf("%d", &arrayLenght); 
 
   int *arrayInt = (int *)malloc(arrayLenght * sizeof(int));
 
@@ -16,13 +16,20 @@ int main()
     exit(EXIT_FAILURE);          // Termina il programma con stato di errore
   }
 
-  for (size_t i = 0; i < arrayLenght; i++)
+  int *p=arrayInt;
+  int count=1;
+  for (p; p < arrayLenght+arrayInt; p++)
   {
-    arrayInt[i] = i + 1;
+    *p = count;
+    count++;
   }
 
-  for (size_t i = 0; i < arrayLenght; i++)
+  p=arrayInt;
+  for (p; p < arrayLenght+arrayInt; p++)
   {
-    printf("%d-", arrayInt[i]);
+    printf("%d-", *p);
   }
+
+  free(arrayInt);
+  arrayInt=NULL;
 }
