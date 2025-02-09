@@ -15,21 +15,17 @@ int main()
 
     int count = 5;
 
-
-    for (size_t i = 1; i < count; i++)
+    for (size_t i = 0; i < count; i++)
     {
         Node *tempActual = (Node *)malloc(sizeof(Node));
         tempActual->data = i;
         tempActual->next = NULL;
 
-                // Salvo l'indirizzo del primo nodo nella testa
         if (i == 0)
             head = tempActual;
-        else // ALTRIMENTI Assegno al next del precedente nodo l'indirizzo del nuovo nodo
+        else
             tempPrevious->next = tempActual;
 
-
-        // Puntatore nodo precedente punta al nodo appena creato
         tempPrevious = tempActual;
     }
 
