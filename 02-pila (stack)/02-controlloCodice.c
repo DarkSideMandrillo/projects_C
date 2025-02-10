@@ -15,9 +15,10 @@ typedef struct Stack
 Stack *creaNodo(int bracket);
 int pilaVuota(Stack *cima);
 void push(Stack **cima, int bracket);
-int pop(Stack **cima);
+char pop(Stack **cima);
 int peek(Stack *cima);
 void stampaPila(Stack *cima);
+int bracketControl(char bracket);
 
 int main()
 {
@@ -25,7 +26,7 @@ int main()
     int ch;
     bool openStr = false;
     int riga = 1;
-    char nomeFile[1024] = "code.txt";
+    char nomeFile[1024] = "oop.txt";
     FILE *fp = fopen(nomeFile, "r");
     if (fp == NULL)
     {
@@ -45,12 +46,24 @@ int main()
             push(&pila, ch);
 
         if ((ch == ')' || ch == ']' || ch == '}') && openStr == false)
-            if (!pop(&pila))
+        {
+            char tempChar;
+            if ((tempChar = pop(&pila)) != 0)
+            {
+                if (bracketControl(ch) != bracketControl(tempChar))
+                {
+                    printf("Parentesi discordanti alla riga %d\n", riga);
+                    fclose(fp);
+                    return EXIT_FAILURE; // Blocca il programma
+                }
+            }
+            else
             {
                 printf("Errore di sintassi alla riga %d\n", riga);
                 fclose(fp);
                 return EXIT_FAILURE; // Blocca il programma
             }
+        }
     }
     if (!pilaVuota(pila))
     {
@@ -94,7 +107,7 @@ void push(Stack **cima, int bracket)
 }
 
 // Funzione per rimuovere un elemento dalla pila (pop)
-int pop(Stack **cima)
+char pop(Stack **cima)
 {
     if (pilaVuota(*cima))
     {
@@ -130,4 +143,16 @@ void stampaPila(Stack *cima)
         corrente = corrente->next;
     }
     printf("\n");
+}
+
+int bracketControl(char bracket)
+{
+    // 0-tonde, 1-quadre, 2-graffe
+    if (bracket == ')' || bracket == '(')
+        return 0;
+    if (bracket == ']' || bracket == '[')
+        return 1;
+    if (bracket == '}' || bracket == '{')
+        return 2;
+    return -1;
 }

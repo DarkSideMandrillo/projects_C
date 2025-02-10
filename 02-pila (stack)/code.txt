@@ -13,7 +13,7 @@ typedef struct Libro{
 
 int trovaRighe(FILE *fp){
     int nRighe = 0;
-    char buffer[1024]];
+    char buffer[1024];
     fgets(buffer, 1024, fp);
     while(fgets(buffer, 1024, fp)!=NULL){
         nRighe++;
