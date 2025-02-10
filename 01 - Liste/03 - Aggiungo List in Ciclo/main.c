@@ -21,10 +21,10 @@ int main()
         tempActual->data = i;
         tempActual->next = NULL;
 
-        if (i==0)
-            head=tempActual;
+        if (i == 0)
+            head = tempActual;
         else
-            tempPrevious->next = tempActual;           
+            tempPrevious->next = tempActual;
 
         tempPrevious = tempActual;
     }
