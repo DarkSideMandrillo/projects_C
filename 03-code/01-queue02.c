@@ -1,15 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
-// Node structure representing a single node in the linked
-// list
+// !!------------------!!
+//      LinkedList
 typedef struct Node
 {
   int data;
   struct Node *next;
 } Node;
 
-// Function to create a new node
+// Funzione crea nuovo nodo
 Node *createNode(int new_data)
 {
   Node *new_node = (Node *)malloc(sizeof(Node));
@@ -18,11 +18,10 @@ Node *createNode(int new_data)
   return new_node;
 }
 
-// Structure to implement queue operations using a linked
-// list
+// !!------------------!!
+//        Queue
 typedef struct Queue
 {
-
   // Pointer to the front and the rear of the linked list
   Node *front, *rear;
 } Queue;
@@ -34,6 +33,8 @@ Queue *createQueue()
   return q;
 }
 
+// !!------------------!!
+//       Funzioni
 Queue *createQueue();
 int isEmpty(Queue *q);
 void enqueue(Queue *q, int new_data);
@@ -45,14 +46,14 @@ int main()
 {
   Queue *q = createQueue();
 
-  // Enqueue elements into the queue
+  // Enqueue elements into the queue - Metti in coda gli elementi
   enqueue(q, 10);
   enqueue(q, 20);
 
   printf("Queue Front: %d\n", getFront(q));
   printf("Queue Rear: %d\n", getRear(q));
 
-  // Dequeue elements from the queue
+  // Dequeue elements from the queue - Rimuovi dalla coda
   dequeue(q);
   dequeue(q);
 
@@ -70,6 +71,7 @@ int main()
   return 0;
 }
 
+// Controlla se la coda è vuota
 int isEmpty(Queue *q)
 {
   if (q->front == NULL && q->rear == NULL)
@@ -77,6 +79,7 @@ int isEmpty(Queue *q)
   return 0;
 }
 
+// Incoda gli elementi dal fondo
 void enqueue(Queue *q, int new_data)
 {
   Node *newNode = createNode(new_data);
@@ -91,6 +94,7 @@ void enqueue(Queue *q, int new_data)
   q->rear = newNode;
 }
 
+// Toglie dalla coda gli elementi dalla testa
 void dequeue(Queue *q)
 {
   if (isEmpty(q))
@@ -108,6 +112,7 @@ void dequeue(Queue *q)
     q->rear = NULL;
 }
 
+// prendi il primo elemento
 int getFront(Queue *q)
 {
   // Checking if the queue is empty
@@ -118,6 +123,8 @@ int getFront(Queue *q)
   }
   return q->front->data;
 }
+
+// prendi l'ultimo elemento
 int getRear(Queue *q)
 {
   // Checking if the queue is empty

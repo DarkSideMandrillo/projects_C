@@ -1,0 +1,16 @@
+Quando usare una doubly linked list?
+Accesso bidirezionale richiesto: Se hai bisogno di navigare sia avanti 
+che indietro nella lista.
+Eliminazione/inserimento frequenti in posizioni arbitrarie: 
+Quando devi rimuovere o aggiungere nodi in mezzo alla lista in modo 
+efficiente.
+Algoritmi complessi: Quando gli algoritmi richiedono il tracciamento 
+dei nodi precedenti o iterazioni in senso inverso.
+
+Quando preferire una singly linked list?
+Semplicità: Se non hai bisogno di navigazione bidirezionale o di 
+eliminazioni rapide.
+Uso di memoria limitato: In contesti dove ogni byte conta (ad esempio, 
+dispositivi embedded).
+Operazioni semplici: Se devi solo aggiungere nodi in testa o coda, 
+o scorrere sequenzialmente.

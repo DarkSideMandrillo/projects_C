@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -136,23 +135,6 @@ void addNodeBottom(Node *head)
 // Ordina la lista in maniera crescente
 void orderList(Node *head)
 {
-    if (head->next == NULL || head == NULL)
-    {
-        return;
-    }
-    Node *current = NULL;
-    current = head;
-    int temp;
-    while (current->next != NULL)
-    {
-        if (current->data > current->next->data)
-        {
-            temp = current->data;
-            current->data = current->next->data;
-            current->data = temp;
-        }
-    }
-
     return;
 }
 

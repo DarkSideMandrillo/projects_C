@@ -4,7 +4,7 @@
 // Definizione della struttura per un nodo della pila
 typedef struct Nodo {
     int dato;
-    struct Nodo* prossimo;
+    struct Nodo* next;
 } Nodo;
 
 // Funzione per creare un nuovo nodo
@@ -15,7 +15,7 @@ Nodo* creaNodo(int dato) {
         exit(1);
     }
     nuovoNodo->dato = dato;
-    nuovoNodo->prossimo = NULL;
+    nuovoNodo->next = NULL;
     return nuovoNodo;
 }
 
@@ -27,7 +27,7 @@ int pilaVuota(Nodo* cima) {
 // Funzione per aggiungere un elemento alla pila (push)
 void push(Nodo** cima, int dato) {
     Nodo* nuovoNodo = creaNodo(dato);
-    nuovoNodo->prossimo = *cima;
+    nuovoNodo->next = *cima;
     *cima = nuovoNodo;
 }
 
@@ -39,7 +39,7 @@ int pop(Nodo** cima) {
     }
     Nodo* temp = *cima;
     int dato = temp->dato;
-    *cima = (*cima)->prossimo;
+    *cima = (*cima)->next;
     free(temp);
     return dato;
 }
@@ -59,7 +59,7 @@ void stampaPila(Nodo* cima) {
     printf("Pila: ");
     while (corrente != NULL) {
         printf("%d ", corrente->dato);
-        corrente = corrente->prossimo;
+        corrente = corrente->next;
     }
     printf("\n");
 }
