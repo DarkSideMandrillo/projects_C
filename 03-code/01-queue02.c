@@ -35,7 +35,7 @@ Queue *createQueue()
 
 // !!------------------!!
 //       Funzioni
-Queue *createQueue();
+// Queue *createQueue();
 int isEmpty(Queue *q);
 void enqueue(Queue *q, int new_data);
 void dequeue(Queue *q);

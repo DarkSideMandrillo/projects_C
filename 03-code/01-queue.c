@@ -25,7 +25,6 @@ Node *createNode(int new_data)
 // list
 typedef struct Queue
 {
-
   // Pointer to the front and the rear of the linked list
   Node *front, *rear;
 } Queue;
@@ -41,7 +40,6 @@ Queue *createQueue()
 // Function to check if the queue is empty
 int isEmpty(Queue *q)
 {
-
   // If the front and rear are null, then the queue is
   // empty, otherwise it's not
   if (q->front == NULL && q->rear == NULL)
@@ -54,7 +52,6 @@ int isEmpty(Queue *q)
 // Function to add an element to the queue
 void enqueue(Queue *q, int new_data)
 {
-
   // Create a new linked list node
   Node *new_node = createNode(new_data);
 
@@ -75,7 +72,6 @@ void enqueue(Queue *q, int new_data)
 // Function to remove an element from the queue
 void dequeue(Queue *q)
 {
-
   // If queue is empty, return
   if (isEmpty(q))
   {
